@@ -3,44 +3,101 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.papara.sdk</groupId>
-    <artifactId>papara</artifactId>
-    <version>v1</version>
+    <groupId>com.papara</groupId>
+    <artifactId>merchant-api</artifactId>
+    <version>1.0.0</version>
+
+    <name>Papara Merchant API</name>
+    <description>It's a java merchant api for papara users to integrate their own projects.</description>
+    <url>https://github.com/paparateam/merchantApiClient-java</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Papara Team</name>
+            <email>info@papara.com</email>
+            <organization>Papara</organization>
+            <organizationUrl>https://www.papara.com/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/paparateam/merchantApiClient-java.git</connection>
+        <developerConnection>scm:git:ssh://github.com/paparateam/merchantApiClient-java.git</developerConnection>
+        <url>https://github.com/paparateam/merchantApiClient-java/tree/main</url>
+    </scm>
+
+    <properties>
+        <java.version>1.7</java.version>
+    </properties>
+
+
     <build>
         <plugins>
-            <!-- any other plugins -->
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>
+                        <id>attach-javadocs</id>
                         <goals>
-                            <goal>single</goal>
+                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
+                    <encoding>UTF-8</encoding>
+                    <additionalOptions>
+                        <additionalOption>-Xdoclint:none</additionalOption>
+                    </additionalOptions>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <minimizeJar>true</minimizeJar>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>7</source>
+                    <target>7</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-    <name>rest-api-sdk</name>
-    <description>Papara Rest API for Java SDK</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -60,5 +117,13 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-papara-com.papara</id>
+            <name>papara-com.papara</name>
+            <url>https://api.bintray.com/maven/papara/com.papara/merchant-api/;publish=1</url>
+        </repository>
+    </distributionManagement>
 
 </project>

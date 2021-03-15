@@ -1395,9 +1395,13 @@ Yeni bir ödeme kaydı oluşturur. Bu işlemi gerçekleştirmek için `Payment` 
 | amount            | BigDecimal | Ödeme yapılacak miktarı alır veya belirler. Ödeme işleminin tutarı. Tam olarak bu tutar ödemeyi yapan kullanıcının hesabından alınacak ve bu tutar ödeme ekranında kullanıcıya gösterilecektir. Miktar alanı minimum 1.00, maksimum 500000.00 olabilir |
 | referenceId       | String     | Referans ID'sini alır veya belirler. Üye işyeri sistemindeki ödeme işleminin referans bilgileridir. İşlem, Papara'ya gönderildiği gibi sonuç bildirimlerinde değiştirilmeden üye işyerine iade edilecektir. 100 karakterden fazla olmamalıdır. Bu alanın benzersiz olması gerekmez ve Papara böyle bir kontrol yapmaz |
 | orderDescription  | String     | Sipariş açıklamasını alır veya belirler. Ödeme işleminin açıklamasıdır. Gönderilen bilgi, Papara ödeme sayfasında kullanıcıya gösterilecektir. Kullanıcı tarafından başlatılan işlemi doğru bir şekilde bildiren bir tanıma sahip olmak, başarılı ödeme şansını artıracaktır. |
-| notificationUrl   | String     | Bildirim URL'sini alır veya belirler. Ödeme bildirim isteklerinin (IPN) gönderileceği URL'dir.  "NotificationUrl" ile gönderilen URL'ye Papara, ödeme tamamlandıktan hemen sonra bir HTTP POST isteği ile ödemenin tüm bilgilerini içeren bir ödeme nesnesi gönderecektir. Üye işyeri bu talebe 200 OK döndürürse tekrar bildirim yapılmayacaktır. Üye işyeri bu bildirime 200 OK dönmezse, Papara, üye işyeri 200 OK'e dönene kadar 24 saat boyunca ödeme bildirimi (IPN) talepleri yapmaya devam edecektir. |
+| notificationUrl   | String     | Bildirim URL'sini alır veya belirler. Ödeme bildirim isteklerinin (IPN) gönderileceği URL'dir.  "NotificationUrl" ile gönderilen URL'ye Papara, ödeme tamamlandıktan hemen sonra bir HTTP POST isteği ile ödemenin tüm bilgilerini içeren bir ödeme nesnesi gönderecektir. "NotificationURL" ile gelen ödeme bildiriminin (IPN) Papara'nın IP adreslerinden geldiğinden emin olunuz. Gönderilen JSON obje içerisindeki "id" alanı ile HTTP GET /payments API metoduna istek yaparak doğrulayabilirsiniz. Üye işyeri bu talebe 200 OK döndürürse tekrar bildirim yapılmayacaktır. Üye işyeri bu bildirime 200 OK dönmezse, Papara, üye işyeri 200 OK'e dönene kadar 24 saat boyunca ödeme bildirimi (IPN) talepleri yapmaya devam edecektir. |
 | redirectUrl       | String     | Yönlendirme URL'sini alır veya belirler. İşlemin sonunda kullanıcının yönlendirileceği URL |
 | turkishNationalId | Long       | TC kimlik numarasını alır veya belirler. Ödemeyi alacak kullanıcının gönderdiği kimlik bilgilerinin Papara sisteminde kontrolünü sağlar. Kimlik bilgilerinde bir çelişki olması durumunda işlem gerçekleşmeyecektir. |
+
+### Önemli UYARI
+
+"NotificationURL" ile gelen ödeme bildiriminin (IPN) Papara'nın IP adreslerinden geldiğinden emin olunuz. Gönderilen JSON obje içerisindeki "id" alanı ile HTTP GET /payments API metoduna istek yaparak doğrulayabilirsiniz.
 
 ### Servis Methodu
 

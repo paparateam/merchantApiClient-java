@@ -154,6 +154,7 @@ public class PaymentServiceTest {
         paymentCreateOptions.setReferenceId(UUID.randomUUID().toString());
         paymentCreateOptions.setTurkishNationalId(AppSettings.tckn);
         paymentCreateOptions.setRedirectUrl("https://testmerchant.com/userredirect");
+        paymentCreateOptions.setCurrency(1);
         ServiceResult<Payment> result = paymentService.createPayment(paymentCreateOptions);
 
         Assert.assertTrue(result.isSucceeded());

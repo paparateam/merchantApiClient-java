@@ -27,6 +27,8 @@ public class PaymentCreateOptions extends PaparaModel {
     private String redirectUrl;
     @SerializedName("turkishNationalId")
     private Long turkishNationalId;
+    @SerializedName(value = "currency")
+    private Integer currency;
 
     /**
      * Gets payment amount. The amount of the payment transaction.
@@ -145,5 +147,23 @@ public class PaymentCreateOptions extends PaparaModel {
      */
     public void setTurkishNationalId(Long turkishNationalId) {
         this.turkishNationalId = turkishNationalId;
+    }
+
+    /**
+     * Gets currency.
+     *
+     * @return currency.
+     */
+    public Integer getCurrency() {
+        return currency;
+    }
+
+    /**
+     * Sets parse currency value.
+     *
+     * @param currency the parse currency value.
+     */
+    public void setCurrency(Integer currency) {
+        this.currency = currency;
     }
 }

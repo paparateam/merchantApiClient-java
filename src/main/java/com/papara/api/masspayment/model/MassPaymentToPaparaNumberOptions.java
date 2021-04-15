@@ -27,6 +27,8 @@ public class MassPaymentToPaparaNumberOptions extends PaparaModel {
     private String description;
     @SerializedName(value = "turkishNationalId")
     private Long turkishNationalId;
+    @SerializedName(value = "currency")
+    private Integer currency;
 
     /**
      * Gets account number. The 10-digit Papara number of the user who will receive the payment.
@@ -148,5 +150,23 @@ public class MassPaymentToPaparaNumberOptions extends PaparaModel {
      */
     public void setTurkishNationalId(Long turkishNationalId) {
         this.turkishNationalId = turkishNationalId;
+    }
+
+    /**
+     * Gets currency.
+     *
+     * @return currency.
+     */
+    public Integer getCurrency() {
+        return currency;
+    }
+
+    /**
+     * Sets parse currency value.
+     *
+     * @param currency the parse currency value.
+     */
+    public void setCurrency(Integer currency) {
+        this.currency = currency;
     }
 }

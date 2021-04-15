@@ -26,6 +26,8 @@ public class MassPaymentToPhoneNumberOptions extends PaparaModel {
     private Long turkishNationalId;
     @SerializedName(value = "description")
     private String description;
+    @SerializedName(value = "currency")
+    private Integer currency;
 
     /**
      * Gets phone number. The mobile number of the user who will receive the payment, registered in Papara.
@@ -125,5 +127,23 @@ public class MassPaymentToPhoneNumberOptions extends PaparaModel {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * Gets currency.
+     *
+     * @return currency.
+     */
+    public Integer getCurrency() {
+        return currency;
+    }
+
+    /**
+     * Sets parse currency value.
+     *
+     * @param currency the parse currency value.
+     */
+    public void setCurrency(Integer currency) {
+        this.currency = currency;
     }
 }

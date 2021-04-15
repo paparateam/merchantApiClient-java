@@ -30,7 +30,7 @@ public class MassPaymentServiceTest {
      */
     @Before
     public void setup() {
-        this.context = new APIContext(AppSettproings.apiKey, null, AppSettings.env);
+        this.context = new APIContext(AppSettings.apiKey, null, AppSettings.env);
         this.massPaymentService = new MassPaymentService(context);
     }
 
@@ -81,6 +81,7 @@ public class MassPaymentServiceTest {
         massPaymentToPaparaNumberOptions.setMassPaymentId(UUID.randomUUID().toString());
         massPaymentToPaparaNumberOptions.setParseAccountNumber(1);
         massPaymentToPaparaNumberOptions.setTurkishNationalId(AppSettings.tckn);
+        massPaymentToPaparaNumberOptions.setCurrency(1);
         ServiceResult<MassPayment> result = massPaymentService.massPaymentByAccount(massPaymentToPaparaNumberOptions);
 
         Assert.assertTrue(result.isSucceeded());
@@ -118,6 +119,7 @@ public class MassPaymentServiceTest {
         massPaymentToPhoneNumberOptions.setDescription("Unit Test: MassPaymentByPhone");
         massPaymentToPhoneNumberOptions.setMassPaymentId(UUID.randomUUID().toString());
         massPaymentToPhoneNumberOptions.setTurkishNationalId(AppSettings.tckn);
+        massPaymentToPhoneNumberOptions.setCurrency(1);
         ServiceResult<MassPayment> result = massPaymentService.massPaymentByPhone(massPaymentToPhoneNumberOptions);
 
         Assert.assertTrue(result.isSucceeded());
@@ -156,6 +158,7 @@ public class MassPaymentServiceTest {
         massPaymentToEmailOptions.setDescription("Unit Test: MassPaymentByEmail");
         massPaymentToEmailOptions.setMassPaymentId(UUID.randomUUID().toString());
         massPaymentToEmailOptions.setTurkishNationalId(AppSettings.tckn);
+        massPaymentToEmailOptions.setCurrency(1);
         ServiceResult<MassPayment> result = massPaymentService.massPaymentByEmail(massPaymentToEmailOptions);
 
         Assert.assertTrue(result.isSucceeded());

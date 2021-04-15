@@ -1286,6 +1286,7 @@ Send money to Papara number. To perform this operation use `massPaymentByAccount
 | massPaymentId      | String     | ets or sets mass payment ID. Unique value  sent by merchant to prevent erroneous repetition in payment transactions. If  a massPaymentId that was sent previously and succeeded is sent again with a new  request, the request will fail. |
 | turkishNationalId  | Long       | Gets or sets national identity number.It  provides the control of the identity information sent by the user who will  receive the payment, in the Papara system. In case of a conflict of  credentials, the transaction will not take place. |
 | description        | String     | Gets or sets description. Description of  the transaction provided by the merchant. It is not a required field. If  sent, the customer sees in the transaction descriptions. |
+| currency                 | Integer    | Gets or sets currency. Values are “0”,  “1”, “2”, “3”        |
 
 ### Service Method
 
@@ -1336,6 +1337,7 @@ Send money to e-mail address registered in Papara. To perform this operation use
 | massPaymentId     | String     | Gets or sets mass payment ID. Unique value  sent by merchant to prevent erroneous repetition in payment transactions. If  a massPaymentId that was sent previously and succeeded is sent again with a  new request, the request will fail. |
 | turkishNationalId | Long       | Gets or sets national identity number.It  provides the control of the identity information sent by the user who will  receive the payment, in the Papara system. In case of a conflict of  credentials, the transaction will not take place. |
 | description       | String     | Gets or sets description. Description of  the transaction provided by the merchant. It is not a required field. If  sent, the customer sees in the transaction descriptions. |
+| currency                 | Integer    | Gets or sets currency. Values are “0”,  “1”, “2”, “3”        |
 
 ### Service Method
 
@@ -1385,6 +1387,7 @@ Send money to phone number registered in Papara. To perform this operation use `
 | massPaymentId     | String     | Gets or sets mass payment ID. Unique value  sent by merchant to prevent erroneous repetition in payment transactions. If  a MassPaymentId that was sent previously and succeeded is sent again with a new  request, the request will fail |
 | turkishNationalId | Long       | Gets or sets national identity number.It  provides the control of the identity information sent by the user who will  receive the payment, in the Papara system. In case of a conflict of  credentials, the transaction will not take place |
 | description       | String     | Gets or sets description. Description of  the transaction provided by the merchant. It is not a required field. If  sent, the customer sees in the transaction descriptions |
+| currency                 | Integer    | Gets or sets currency. Values are “0”,  “1”, “2”, “3”        |
 
 ### Service Method
 
@@ -1570,6 +1573,8 @@ Creates a new payment record. To perform this operation use `createPayment` meth
 | notificationUrl   | String     | Gets or sets notification URL. The URL to  which payment notification requests (IPN) will be sent. With this field, the  URL where the POST will be sent to the payment merchant must be sent. To the  URL sent with "notificationUrl", Papara will send a payment object  containing all information of the payment with an HTTP POST request  immediately after the payment is completed. Make sure that the payment notification (IPN) coming to "NotificationURL" comes from Papara's IP addresses. You can check the payment by calling HTTP GET /payments API method with the "id" field in the submitted JSON. If the merchant returns 200 OK to  this request, no notification will be made again. If the merchant does not  return 200 OK to this notification, Papara will continue to make payment  notification (IPN) requests for 24 hours until the merchant returns to 200 OK |
 | redirectUrl       | String     | Gets or sets redirect URL. URL to which  the user will be redirected at the end of the process |
 | turkishNationalId | Long       | Gets or sets national identity number.It  provides the control of the identity information sent by the user who will  receive the payment, in the Papara system. In case of a conflict of  credentials, the transaction will not take place |
+| currency                 | Integer    | Gets or sets currency. Values are “0”,  “1”, “2”, “3”        |
+
 
 ### Important Warning
 

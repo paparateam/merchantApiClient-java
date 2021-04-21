@@ -947,7 +947,7 @@ Verilen tarihler aralığındaki nakit para yükleme işlemlerine erişim için 
     }
 ```
 
-## Provision Settlements
+## Ön Ödemesiz İşlemler İçin Mutabakat
 
 Verilen tarihlerde gerçekleştirilen ön ödemesiz para yükleme işlemlerin toplam sayısını ve hacmini döndürür. Hesaplamaya hem başlangıç hem de bitiş tarihleri dahil edilir. Bu işlemi gerçekleştirmek için, `Cash Deposit`  servisinde bulunan`provisionSettlements` methodunu kullanın. `startDate` ve `endDate` gönderilmelidir.
 
@@ -986,7 +986,7 @@ Verilen tarihler arasındaki toplam ön ödemesiz nakit para yükleme işlem hac
     }
 ```
 
-## Settlements
+## Mutabakatlar
 
 Verilen tarihlerde gerçekleştirilen para yükleme işlemlerinin toplam sayısını ve hacmini döndürür. Hesaplamaya hem başlangıç hem de bitiş tarihleri dahil edilir. Bu işlemi gerçekleştirmek için, `Cash Deposit`  servisinde bulunan `settlement` methodunu kullanın. `startDate` ve `endDate` gönderilmelidir.
 
@@ -1025,7 +1025,7 @@ Verilen tarihler arasındaki toplam nakit para yükleme işlem hacmini ve sayım
     }
 ```
 
-## Possible Errors and Error Codes
+## Olası Hatalar ve Hata Kodları
 
 | **Hata Kodu** | **Hata Açıklaması**                                          |
 | ------------- | ------------------------------------------------------------ |
@@ -1044,7 +1044,7 @@ Verilen tarihler arasındaki toplam nakit para yükleme işlem hacmini ve sayım
 
 Bu bölüm, ödemelerini kullanıcılarına hızlı, güvenli ve yaygın bir şekilde Papara üzerinden dağıtmak isteyen işyerleri için hazırlanmış teknik entegrasyon bilgilerini içerir.
 
-## Get Mass Payment
+## Ödeme Dağıtım Bilgilerine Erişim
 
 Ödeme dağıtım işlemi hakkında bilgileri döner. Bu işlemi yamak için `MassPayment` servisinde bulunan `getMassPayment` methodunu kullanın. `id` gönderilmelidir.
 
@@ -1266,7 +1266,7 @@ Papara'da kayıtlı telefon numarasına para gönderin. Bu işlemi gerçekleşti
 
 
 
-## Possible Errors and Error Codes
+## Olası Hatalar ve Hata Kodları
 
 | **Hata Kodu** | **Hata Açıklaması**                                          |
 | ------------- | ------------------------------------------------------------ |
@@ -1346,7 +1346,7 @@ Papara'da kayıtlı telefon numarasına para gönderin. Bu işlemi gerçekleşti
     }
 ```
 
-## Get Payment By Payment Reference Number
+## Referans Numarasına Göre Ödeme Bilgilerine Erişim
 
 Ödeme bilgilerini döndürür. Bu işlemi gerçekleştirmek için `Payment` servisinde bulunan `getPaymentByReference` methodunu kullanın. `referenceId` gönderilmelidir.
 
@@ -1383,9 +1383,7 @@ public ServiceResult<Payment> getPaymentByReference() throws PaparaRESTException
   }
 ```
 
-
-
-## Create Payment
+## Ödeme Oluşturma
 
 Yeni bir ödeme kaydı oluşturur. Bu işlemi gerçekleştirmek için `Payment` servisinde bulunan `createPayment`  methodunu kullanın. `Amount`, `ReferenceId`, `orderDescription`, `notificationUrl` ve `redirectUrl` sağlanmalıdır.
 
@@ -1434,7 +1432,38 @@ Yeni bir ödeme kaydı oluşturur. Bu işlemi gerçekleştirmek için `Payment` 
     }
 ```
 
-## Refund 
+###  Ödeme Sonucunu Doğrulama 
+
+Kullanıcının işlemi başarıyla tamamlamasını takiben, **kullanıcı üye işyerine yönlendirilmeden önce**, Papara, üye işyerinin ödeme isteği ile birlikte gönderdiği `notificationUrl`'e bir **HTTP POST** isteği yapar.
+
+Yapılan isteğin `body` kısmında, ödeme isteği oluşturma dönen değerin `data` objesi ile aynı yapıda bir JSON objesi bulunacaktır. Örnek:
+
+```json
+{
+    "merchantId": "123-4564-8484",
+    "userId": "123-987-654",
+    "paymentMethod": 1,
+    "paymentMethodDescription": "Credit/Debit Card",
+    "referenceId": "Üye işyeri referans bilgisi",
+    "orderDescription": "Kullanıcının ödeme sayfasında göreceği açıklama",
+    "status": 1,
+    "statusDescription": "Completed",    
+    "amount": 99.99,
+    "fee": 1.98,
+    "currency": "TRY",
+    "notificationUrl": "https://www.papara.com/notification",
+    "notificationDone": false,
+    "redirectUrl": "https://www.papara.com/userredirect",
+    "merchantSecretKey": "Üye işyeri panelinde bulunan secret key",
+    "paymentUrl": "www.papara.com/pid?6666-5555-ABCD",
+    "returningRedirectUrl": "",
+    "id": "6666-5555-ABCD",
+    "createdAt": "2017-06-09T06:26:15.100Z",
+    "turkishNationalId": 12345678901,
+}
+```
+
+## İade İşlemi
 
 Üye iş yerinin ödeme ID'siyle tamamlanmış bir ödemesini iade etmesini sağlar. Bu işlemi gerçekleştirmek için `Payment` servisinde bulunan `refundPayment` yöntemini kullanın. `id` gönderilmelidir.
 
@@ -1534,7 +1563,7 @@ Yeni bir ödeme kaydı oluşturur. Bu işlemi gerçekleştirmek için `Payment` 
     }
 ```
 
-## Possible Errors and Error Codes
+## Olası Hatalar ve Hata Kodları
 
 | **Hata Kodu** | **Hata Açıklaması**                                          |
 | ------------- | ------------------------------------------------------------ |
@@ -1738,7 +1767,7 @@ Paparaya kayıtlı TC kimlik numarası ile doğrulama yapılmak istenildiğinde 
 
 
 
-# <a name="response-types">Response Types</a>
+# <a name="response-types">Geri Dönüş Tipleri</a>
 
 Bu bölüm, API'den dönüş değerleri hakkında teknik bilgiler içerir.
 

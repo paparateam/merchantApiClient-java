@@ -20,7 +20,11 @@ public enum Currency {
     /**
      * Eur currency.
      */
-    EUR(2);
+    EUR(2),
+    /**
+     * Gbp currency.
+     */
+    GBP(3);
 
     private Integer value;
 
@@ -46,4 +50,3 @@ public enum Currency {
         this.value = value;
     }
 }
-

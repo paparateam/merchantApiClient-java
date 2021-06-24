@@ -5,7 +5,9 @@ import com.papara.base.PaparaModel;
 
 import java.math.BigDecimal;
 
-/** MassPayment class is used by mass payment service to match returning mass payment values from API.
+/**
+ * MassPayment class is used by mass payment service to match returning mass
+ * payment values from API.
  *
  * @author Burak Serpici <burak.serpici@crosstech.com.tr>
  * @version 0.0.1
@@ -113,7 +115,8 @@ public class MassPayment extends PaparaModel {
     }
 
     /**
-     * Sets mass payment currency.
+     * Sets mass payment currency. Values are “0” (TRY), “1” (USD), “2” (EUR), “3”
+     * (GBP).
      *
      * @param currency the currency
      */

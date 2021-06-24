@@ -50,5 +50,8 @@ public class Endpoint {
     public static final String MASSPAYMENT_ID = "/masspayment?id={0}";
     public static final String MASSPAYMENT_REFERENCE = "/masspayment/byreference?reference={0}";
 
+    public static final String RECURRINGMASSPAYMENT_PHONE = "/recurringmasspayment/phone";
+    public static final String RECURRINGMASSPAYMENT_EMAIL = "/recurringmasspayment/email";
+    public static final String RECURRINGMASSPAYMENT_ACCOUNT = "/recurringmasspayment";
 
 }

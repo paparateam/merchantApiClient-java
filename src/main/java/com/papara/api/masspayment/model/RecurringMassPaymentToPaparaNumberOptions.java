@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * RecurringMassPaymentToPaparaNumberOptions is used by mass payment service for
  * providing request parameters.
  *
- * @author Burak Serpici <burak.serpici@crosstech.com.tr>
+ * @author Mehmet Canhoroz <m.canhoroz@papara.com>
  * @version 0.0.1
  * @see PaparaModel
  * @since 0.0.1
@@ -22,14 +22,16 @@ public class RecurringMassPaymentToPaparaNumberOptions extends PaparaModel {
     private Integer parseAccountNumber;
     @SerializedName(value = "amount")
     private BigDecimal amount;
-    @SerializedName(value = "massPaymentId")
-    private String massPaymentId;
-    @SerializedName(value = "description")
-    private String description;
     @SerializedName(value = "turkishNationalId")
     private Long turkishNationalId;
     @SerializedName(value = "currency")
     private Integer currency;
+    @SerializedName(value = "period")
+    private Integer period;
+    @SerializedName(value = "executionDay")
+    private Integer executionDay;
+    @SerializedName(value = "description")
+    private String description;
 
     /**
      * Gets account number. The 10-digit Papara number of the user who will receive

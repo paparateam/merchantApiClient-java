@@ -73,27 +73,6 @@ public class RecurringMassPaymentToPhoneNumberOptions extends PaparaModel {
     }
 
     /**
-     * Gets mass payment id. Unique value sent by merchant to prevent erroneous
-     * repetition in payment transactions. If a massPaymentId that was sent
-     * previously and succeeded is sent again with a new request, the request will
-     * fail.
-     *
-     * @return the mass payment id
-     */
-    public String getMassPaymentId() {
-        return massPaymentId;
-    }
-
-    /**
-     * Sets mass payment id.
-     *
-     * @param massPaymentId the mass payment id
-     */
-    public void setMassPaymentId(String massPaymentId) {
-        this.massPaymentId = massPaymentId;
-    }
-
-    /**
      * Gets turkish national id. It provides the control of the identity information
      * sent by the user who will receive the payment, in the Papara system. In case
      * of a conflict of credentials, the transaction will not take place.
@@ -150,4 +129,41 @@ public class RecurringMassPaymentToPhoneNumberOptions extends PaparaModel {
     public void setCurrency(Integer currency) {
         this.currency = currency;
     }
+
+    /**
+     * Gets recurring mass payment period.
+     *
+     * @return the period
+     */
+    public Integer getPeriod() {
+        return period;
+    }
+
+    /**
+     * Sets recurring mass payment period.
+     *
+     * @param period the period
+     */
+    public void setPeriod(Integer period) {
+        this.period = period;
+    }
+
+    /**
+     * Gets recurring mass payment execution day.
+     *
+     * @return the execution day
+     */
+    public Integer getExecutionDay() {
+        return executionDay;
+    }
+
+    /**
+     * Sets recurring mass payment execution day.
+     *
+     * @param executionDay the execution day
+     */
+    public void setExecutionDay(Integer executionDay) {
+        this.executionDay = executionDay;
+    }
+
 }

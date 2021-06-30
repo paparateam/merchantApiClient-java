@@ -1326,7 +1326,7 @@ Papara numarasına düzenli para gönderin. Bu işlemi gerçekleştirmek için `
         recurringMassPaymentToPaparaNumberOptions.setCurrency(0);
         recurringMassPaymentToPaparaNumberOptions.setPeriod(0);
         recurringMassPaymentToPaparaNumberOptions.setExecutionDay(1);
-        ServiceResult<RecurringMassPayment> result = recurringMassPaymentService.massPaymentByAccount(recurringMassPaymentToPaparaNumberOptions);
+        ServiceResult<RecurringMassPayment> result = massPaymentService.recurringMassPaymentByAccount(recurringMassPaymentToPaparaNumberOptions);
         return result;
     }
 ```
@@ -1347,30 +1347,19 @@ Papara'da kayıtlı bir E-posta adresine düzenli para gönderin. Bu işlemi ger
 Üye iş yeri için verilen e-posta adresine düzenli ödeme göndermek için kullanılır.
 | **Method**      | **Parametreler**                 | **Geri Dönüş Tipi**             |
 | --------------- | -------------------------------- | ------------------------------- |
-| CreateRecurringMassPaymentWithEmail | RecurringMassPaymentToEmailOptions | PaparaSingleResult<RecurringMassPayment> |
+| recurringMassPaymentByEmail | RecurringMassPaymentToEmailOptions | ServiceResult |
 #### Kullanım Şekli
-```csharp
-var requestOptions = new RequestOptions
-{
-    ApiKey = "YOUR_API_KEY",
-    IsTest = true //Test veya canlı ortamı için bağlantı yapılandırması
-};
-var massPaymentService = new MassPaymentService(requestOptions);
-var recurringMassPaymentServiceResult = massPaymentService.CreateRecurringMassPaymentWithEmail(new RecurringMassPaymentToEmailOptions
-{
-    Email = "example@example.com",
-    Amount = 99.99,
-    TurkishNationalId = 12345678901, //opsiyonel
-    Currency = 0, //opsiyonel
-    Period = 1,
-    ExecutionDay =1,
-    Description = "test"
-});
-if (!recurringMassPaymentServiceResult.Succeeded)
-{
-    throw new Exception(recurringMassPaymentServiceResult.Error.Message);
-}
-return recurringMassPaymentServiceResult;
+```java
+    @Override
+    public ServiceResult<RecurringMassPayment> recurringMassPaymentByEmail() throws PaparaRESTException {
+        RecurringMassPaymentToEmailOptions recurringMassPaymentToEmailOptions = new RecurringMassPaymentToEmailOptions();
+        recurringMassPaymentToEmailOptions.setEmail(AppSettings.personalEmail);
+        recurringMassPaymentToEmailOptions.setAmount(new BigDecimal(1));
+        recurringMassPaymentToEmailOptions.setDescription("Unit Test: RecurringMassPaymentByEmail");
+        recurringMassPaymentToEmailOptions.setTurkishNationalId(AppSettings.tckn);
+        ServiceResult<RecurringMassPayment> result = massPaymentService.recurringMassPaymentByEmail(recurringMassPaymentToEmailOptions);
+        return result;
+    }
 ```
 ## Telefon Numarasına Düzenli Gönderme
 Papara'da kayıtlı telefon numarasına düzenli para gönderin. Bu işlemi gerçekleştirmek için `MassPayment` servisinde bulunan `CreateRecurringMassPaymentWithPhoneNumber` methodunu kullanın. `PhoneNumber`, `Amount`, `ExecutionDay`, `Description`  ve `Period` gönderilmelidir.
@@ -1390,30 +1379,19 @@ Papara'da kayıtlı telefon numarasına düzenli para gönderin. Bu işlemi ger�
 Üye iş yeri için verilen telefon numarasına düzenli ödeme göndermek için kullanılır.
 | **Method**      | **Parametreler**                 | **Geri Dönüş Tipi**             |
 | --------------- | -------------------------------- | ------------------------------- |
-| CreateRecurringMassPaymentWithPhoneNumber | RecurringMassPaymentToPhoneNumberOptions | PaparaSingleResult<RecurringMassPayment> |
+| recurringMassPaymentByPhone | RecurringMassPaymentToPhoneNumberOptions | ServiceResult |
 #### Kullanım Şekli
-```csharp
-var requestOptions = new RequestOptions
-{
-    ApiKey = "YOUR_API_KEY",
-    IsTest = true //Test veya canlı ortamı için bağlantı yapılandırması
-};
-var massPaymentService = new MassPaymentService(requestOptions);
-var recurringMassPaymentServiceResult = massPaymentService.CreateMassPaymentWithPhoneNumber(new RecurringMassPaymentToEmailOptions
-{
-    PhoneNumber = "+905012345678",
-    Amount = 99.99,
-    TurkishNationalId = 12345678901, //opsiyonel
-    Currency = 0, //opsiyonel
-    Period = 1,
-    ExecutionDay =1,
-    Description = "test"
-});
-if (!recurringMassPaymentServiceResult.Succeeded)
-{
-    throw new Exception(recurringMassPaymentServiceResult.Error.Message);
-}
-return recurringMassPaymentServiceResult;
+```java
+    @Override
+    public ServiceResult<RecurringMassPayment> recurringMassPaymentByPhone() throws PaparaRESTException {
+        RecurringMassPaymentToPhoneNumberOptions recurringMassPaymentToPhoneNumberOptions = new RecurringMassPaymentToPhoneNumberOptions();
+        recurringMassPaymentToPhoneNumberOptions.setPhoneNumber(AppSettings.personalPhoneNumber);
+        recurringMassPaymentToPhoneNumberOptions.setAmount(new BigDecimal(1));
+        recurringMassPaymentToPhoneNumberOptions.setDescription("Unit Test: RecurringMassPaymentByPhone");
+        recurringMassPaymentToPhoneNumberOptions.setTurkishNationalId(AppSettings.tckn);
+        ServiceResult<RecurringMassPayment> result = massPaymentService.recurringMassPaymentByPhone(recurringMassPaymentToPhoneNumberOptions);
+        return result;
+    }
 ```
 ## Olası Hatalar ve Hata Kodları
 | **Hata Kodu** | **Hata Açıklaması**                                          |

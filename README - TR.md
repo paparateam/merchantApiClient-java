@@ -1279,8 +1279,7 @@ Papara'da kayıtlı telefon numarasına para gönderin. Bu işlemi gerçekleşti
 | 133           | MassPaymentID yakın zamanda kullanıldı.                      |
 | 997           | Ödemeleri dağıtma yetkiniz yok. Müşteri temsilcinizle iletişime geçebilir ve üye iş yeri hesabınıza bir ödeme dağıtım tanımı talep edebilirsiniz. |
 | 998           | Gönderdiğiniz parametreler beklenen formatta değil. Örnek: Müşteri numarası 10 haneden az. Bu durumda, hata mesajı format hatasının ayrıntılarını içerir. |
-| 999           | Papara sisteminde bir hata oluştu.    
-                       |
+| 999 | Papara sisteminde bir hata oluştu. |
 # <a name="recurring-mass-payment"> Düzenli Ödeme Dağıtma</a> 
 Bu bölüm, ödemelerini kullanıcılarına hızlı, güvenli ve yaygın bir şekilde Papara üzerinden düzenli bir şekilde dağıtmak isteyen iş yerleri için hazırlanmış teknik entegrasyon bilgilerini içerir.
 Düzenli dağıtım istekleri için, period ve çalışma günü bilgisini göndererek günlük, haftalık ve aylık düzenli dağıtım isteği tanımlayabilirsiniz.

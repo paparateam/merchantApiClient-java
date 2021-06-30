@@ -12,6 +12,8 @@
 
 <a href="#mass-payment">Mass Payment</a>
 
+<a href="#recurring-mass-payment">Recurring Mass Payment</a>
+
 <a href="#payments">Payments</a>
 
 <a href="#validation">Validation</a>

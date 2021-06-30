@@ -12,6 +12,8 @@
 
 <a href="#mass-payment">Ödeme Dağıtma</a>
 
+<a href="#recurring-mass-payment">Düzenli Ödeme Dağıtma</a>
+
 <a href="#payments">Ödeme Alma</a>
 
 <a href="#validation">Doğrulama</a>

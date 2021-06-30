@@ -1357,6 +1357,9 @@ Papara'da kayıtlı bir E-posta adresine düzenli para gönderin. Bu işlemi ger
         recurringMassPaymentToEmailOptions.setAmount(new BigDecimal(1));
         recurringMassPaymentToEmailOptions.setDescription("Unit Test: RecurringMassPaymentByEmail");
         recurringMassPaymentToEmailOptions.setTurkishNationalId(AppSettings.tckn);
+        recurringMassPaymentToEmailOptions.setCurrency(0);
+        recurringMassPaymentToEmailOptions.setPeriod(0);
+        recurringMassPaymentToEmailOptions.setExecutionDay(1);
         ServiceResult<RecurringMassPayment> result = massPaymentService.recurringMassPaymentByEmail(recurringMassPaymentToEmailOptions);
         return result;
     }
@@ -1389,6 +1392,9 @@ Papara'da kayıtlı telefon numarasına düzenli para gönderin. Bu işlemi ger�
         recurringMassPaymentToPhoneNumberOptions.setAmount(new BigDecimal(1));
         recurringMassPaymentToPhoneNumberOptions.setDescription("Unit Test: RecurringMassPaymentByPhone");
         recurringMassPaymentToPhoneNumberOptions.setTurkishNationalId(AppSettings.tckn);
+        recurringMassPaymentToPhoneNumberOptions.setCurrency(0);
+        recurringMassPaymentToPhoneNumberOptions.setPeriod(0);
+        recurringMassPaymentToPhoneNumberOptions.setExecutionDay(1);
         ServiceResult<RecurringMassPayment> result = massPaymentService.recurringMassPaymentByPhone(recurringMassPaymentToPhoneNumberOptions);
         return result;
     }
